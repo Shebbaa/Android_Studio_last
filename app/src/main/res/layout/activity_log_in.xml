@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".ui.LoginActivity">
+
+
+    <TextView
+        android:id="@+id/logintextView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/proggy_vector_dotted"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:text="Welcome Back"
+        android:textSize="24sp"
+        android:textColor="@color/gray"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/logintextView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/proggy_vector_dotted"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:text="Fill in your email and password to continue"
+        android:textSize="16sp"
+        android:textColor="@color/gray2"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/logintextView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/proggy_vector_dotted"
+        android:layout_marginLeft="15dp"
+        android:text="Email Address"
+        android:textSize="16sp"
+        android:textColor="@color/gray2"
+        tools:ignore="MissingConstraints" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/logInEmailAddress"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp"
+        tools:ignore="MissingConstraints">
+        
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/logInEmailAddressField"
+
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:TextSize="14sp"
+            android:paddingTop="10dp"
+            android:inputType="textPassword"
+            android:text="hadtrist@mail.ru"
+            android:textColor="@color/gray2"
+            android:fontFamily="@font/proggy_vector_dotted">
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@id/logintextView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:fontFamily="@font/proggy_vector_dotted"
+            android:text="Password"
+            android:textSize="16sp"
+            android:textColor="@color/gray2">
+            
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/LoginPasswordTextInputLayout"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                app:passwordToggleEnabled="true">
+            </com.google.android.material.textfield.TextInputLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:orientation="horizontal">
+            
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/loginCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:buttonTint="@color/blue2"
+                android:textColor="@color/gray2"
+                android:layout_weight="1"
+                android:text="Remember password"/>
+
+            <TextView
+                android:onClick="forgot"
+                android:id="@+id/logintextView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:gravity="right"
+                android:textStyle="bold"
+                android:fontFamily="@font/proggy_vector_dotted"
+                android:textColor="@color/blue"
+                android:text="Forgot password?"/>
+        </LinearLayout>
+        
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/logintextView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/gray2"
+                android:text="Already have an account?"/>
+
+            <TextView
+                android:onClick="signup"
+                android:id="@+id/logintextView17"
+                android:width="wrap_content"
+                android:height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/blue"
+                android:text="Sign up" />
+        </LinearLayout>
+        
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/gray2"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="or sign in using"/>
+        <ImageView
+            android:id="@+id/imageview5"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/g"/>
+        </LinearLayout>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

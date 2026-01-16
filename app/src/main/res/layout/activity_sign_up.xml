@@ -209,7 +209,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="16dp"
-            app:buttonTing="@color/blue2"
+            app:buttonTint="@color/blue2"
             android:text=""/>
         
         <TextView
@@ -273,7 +273,7 @@
             android:textColor="@color/blue"
             android:text="Sign in"/>
     </LinearLayout>
-    
+
     <TextView
         android:id="@+id/textView18"
         android:layout_width="match_parent"

@@ -1,10 +1,293 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context=".ui.SignUpActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/proggy_vector_dotted"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:text="Create an account"
+        android:textSize="24sp"
+        android:textColor="@color/gray"
+        android:textStyle="bold" />
+    
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray2"
+        android:textSize="16sp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:text="Complete the sign up process to get started"/>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray2"
+        android:textSize="16sp"
+        android:layout_marginLeft="15dp"
+        android:text="Full name"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fullname"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fullnamefield"
+
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:textSize="14sp"
+            android:paddingTop="10dp"
+            android:textColor="@color/gray2"
+            android:fontFamily="@font/proggy_vector_dotted"
+            android:text="Фамилия имя" />
+    </com.google.android.material.textfield.TextInputLayout>
+    
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:fontFamily="@font/proggy_vector_dotted"
+        android:text="Phone number"
+        android:textSize="16sp"
+        android:textColor="@color/gray2"/>
+    
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phoneNumber"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp">
+        
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phoneNumberField"
+
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:textSize="14sp"
+            android:padding="10dp"
+            android:textColor="@color/gray2"
+            android:fontFamily="@font/proggy_vector_dotted"
+            android:text="+7905" />
+    </com.google.android.material.textfield.TextInputLayout>
+    
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:fontFamily="@font/proggy_vector_dotted"
+        android:text="Email"
+        android:textSize="16sp"
+        android:textColor="@color/gray2"/>
+    
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailAddress"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp">
+        
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailAddressField"
+
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:textSize="14sp"
+            android:paddingTop="14dp"
+            android:inputType="textPassword"
+            android:textColor="@color/gray2"
+            android:fontFamily="@font/proggy_vector_dotted"
+            android:text="hadtrist@mail.ru" />
+    </com.google.android.material.textfield.TextInputLayout>
+    
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:fontFamily="@font/proggy_vector_dotted"
+        android:text="Password"
+        android:textSize="16sp"
+        android:textColor="@color/gray2"/>
+    
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordTextInputLayout"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp"
+        app:passwordToggleEnabled="true">
+        
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
+
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:textColor="@color/gray2"
+            android:textSize="14sp"
+            android:paddingTop="10dp"
+            android:fontFamily="@font/proggy_vector_dotted"
+            android:text="123456789"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    
+    <TextView
+        android:id="@+id/textView9"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:fontFamily="@font/proggy_vector_dotted"
+        android:text="Confirm Password"
+        android:textSize="16sp"
+        android:textColor="@color/gray2"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/confirmPasswordTextInputLayout"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp"
+        app:passwordToggleEnabled="true">
+        
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/confirmPassword"
+
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:fontFamily="@font/proggy_vector_dotted"
+            android:inputType="textPassword"
+            android:paddingTop="10dp"
+            android:text="123456789"
+            android:textColor="@color/gray2"
+            android:textSize="14sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/signupCheckBox"
+
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            app:buttonTing="@color/blue2"
+            android:text=""/>
+        
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textSize="12sp"
+            android:textColor="@color/gray2"
+            android:text="By ticking this box, you agree to our" />
+        
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/yellow"
+            android:textSize="12sp"
+            android:text="Terms and"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/yellow"
+        android:textSize="12sp"
+        android:text="conditions and private policy" />
+    
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_signup"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        app:cornerRadius="4dp"
+        android:backgroundTint="@color/gray2"
+        android:text="Sign up"/>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+    
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/gray2"
+            android:text="Already have an account?"/>
+        <TextView
+            android:onClick="signin"
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/blue"
+            android:text="Sign in"/>
+    </LinearLayout>
+    
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/gray2"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:text="or sing in using"/>
+
+    <ImageView
+        android:id="@+id/imageview5"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/g"/>
+</LinearLayout>

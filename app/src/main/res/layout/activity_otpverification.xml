@@ -1,10 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context=".ui.OTPVerificationActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/proggy_vector_dotted"
+        android:text="OTP Verification"
+        android:textColor="@color/gray"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter the 6 digit numbers sent to your email"
+        android:fontFamily="@font/proggy_vector_dotted"
+        android:textSize="14sp"
+        android:textColor="@color/gray2"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp" />
+
+    <com.chaos.view.PinView
+        android:id="@+id/pinView"
+        android:layout_width="wrap_content"
+        android:layout_height="50sp"
+        app:hideLineWhenFilled="false"
+        android:cursorVisible="true"
+        android:inputType="number"
+        app:itemCount="6"
+        android:textSize="20sp"
+        app:itemSpacing="15dp">
+    </com.chaos.view.PinView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="50sp"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="320sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="If you didn't receive code, "
+            android:textColor="@color/gray2"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/resendAfter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=" resend after "
+            android:textSize="14sp"
+            android:textColor="@color/gray2" />
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/SetNewPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        app:cornerRadius="4dp"
+        android:backgroundTint="@color/gray2"
+        android:text="Set New Password" />
+
+</LinearLayout>

@@ -1,26 +1,93 @@
 package com.example.folomeev.ui;
 
-import android.os.Bundle;
+import static com.example.folomeev.utils.Utils.APIKEY;
+import static com.example.folomeev.utils.Utils.BASE_URL;
+import static com.example.folomeev.utils.Utils.GRANT_TYPE;
 
-import androidx.activity.EdgeToEdge;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.folomeev.R;
+import com.example.folomeev.controller.API;
+import com.example.folomeev.data.ResponseUser;
+import com.example.folomeev.data.User;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NewPasswordActivity extends AppCompatActivity {
+
+    Retrofit retrofit;
+    MaterialButton newPassButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_new_password);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        newPassButton = findViewById(R.id.button_NewPassSignIn);
+
+        String newToken = getIntent().getStringExtra("newToken");
+        String EmailForPassChange = getIntent().getStringExtra("passedEmail");
+
+        TextInputEditText newPassConfirm = findViewById(R.id.newPasswordConfirmField);
+        TextInputEditText newPassField = findViewById(R.id.newPasswordField);
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        API api = retrofit.create(API.class);
+
+        newPassButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (newPassConfirm.getEditableText().toString() != newPassField.getEditableText().toString()) {
+                    Toast.makeText(NewPasswordActivity.this, "Password's doesn't match", Toast.LENGTH_SHORT).show();
+                } else {
+                    User user = new User(EmailForPassChange, newPassConfirm.getEditableText().toString());
+                    Call<Void> call = api.updatePassword(APIKEY, "Bearer " + newToken, user);
+                    call.enqueue(new Callback<Void>() {
+                        @Override
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+                            if (response.isSuccessful()) {
+                                Toast.makeText(NewPasswordActivity.this, "Password changed", Toast.LENGTH_SHORT).show();
+                                Call<ResponseUser> logInCall = api.login(GRANT_TYPE, APIKEY, user);
+                                logInCall.enqueue(new Callback<ResponseUser>() {
+                                    @Override
+                                    public void onResponse(Call<ResponseUser> call, Response<ResponseUser> response) {
+                                        if (response.isSuccessful()) {
+                                            startActivity(new Intent(NewPasswordActivity.this, HomeActivity.class));
+                                        } else {
+                                            Toast.makeText(NewPasswordActivity.this, response.code() + "", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<ResponseUser> call, Throwable t) {
+                                        Toast.makeText(NewPasswordActivity.this, t.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Void> call, Throwable throwable) {
+                            Toast.makeText(NewPasswordActivity.this, throwable.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
         });
     }
 }

@@ -25,7 +25,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class LogInActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     TextInputLayout email, password;
     MaterialButton button;
@@ -61,17 +61,17 @@ public class LogInActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<ResponseUser> call, Response<ResponseUser> response) {
                         if (response.isSuccessful()) {
-                            Toast.makeText(LogInActivity.this, "sign in ok", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LogInActivity.this, HomeActivity.class));
+                            Toast.makeText(LoginActivity.this, "sign in ok", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                         } else {
-                            Toast.makeText(LogInActivity.this, response.code() + "", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, response.code() + "", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<ResponseUser> call, Throwable t) {
 
-                        Toast.makeText(LogInActivity.this, t.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, t.getMessage().toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -79,10 +79,10 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public void signup(View view) {
-        startActivity(new Intent(LogInActivity.this, SignUpActivity.class));
+        startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
     }
 
     public void forgot(View view) {
-        startActivity(new Intent(LogInActivity.this, ForgotPasswordActivity.class));
+        startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
     }
 }

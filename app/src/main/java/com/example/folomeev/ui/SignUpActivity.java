@@ -7,12 +7,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatCheckBox;
 
 import com.example.folomeev.R;
 import com.example.folomeev.controller.API;
 import com.example.folomeev.data.User;
+import com.example.folomeev.data.ResponseUser;
 import com.example.folomeev.utils.Utils;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
@@ -23,10 +26,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class SignUpActivity extends AppCompatActivity { //активность обработки запроса на регистрацию пользователя
+public class SignUpActivity extends AppCompatActivity {
 
-    TextInputLayout name, phone, email, pswrd, pswrdConfirm;
+    AppCompatCheckBox checkBox;
     MaterialButton button;
+    TextView signIntext;
+    TextInputLayout email, password, passwordConfirm;
     Retrofit retrofit;
 
     @Override
@@ -34,12 +39,12 @@ public class SignUpActivity extends AppCompatActivity { //активность �
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        name = findViewById(R.id.fullname);
-        phone = findViewById(R.id.phoneNumber);
-        email = findViewById(R.id.emailAddress);
-        pswrd = findViewById(R.id.passwordTextInputLayout);
-        pswrdConfirm = findViewById(R.id.confirmPasswordTextInputLayout);
+        checkBox = findViewById(R.id.signupCheckBox);
         button = findViewById(R.id.button_signup);
+        signIntext = findViewById(R.id.textView17);
+        email = findViewById(R.id.emailAddress);
+        password = findViewById(R.id.passwordTextInputLayout);
+        passwordConfirm = findViewById(R.id.confirmPasswordTextInputLayout);
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -49,39 +54,52 @@ public class SignUpActivity extends AppCompatActivity { //активность �
         API api = retrofit.create(API.class);
 
         button.setOnClickListener(new View.OnClickListener() {
-            //регистрация пользователя на сервере
             @Override
             public void onClick(View view) {
-                //создание объекта пользователь
-                Utils.user = new User(
-                        String.valueOf(name.getEditText().getText()),
-                        String.valueOf(phone.getEditText().getText()),
-                        String.valueOf(email.getEditText().getText()),
-                        String.valueOf(password.getEditText().getText())
-                );
-                //запрос к базе данных на регистрацию пользователя
-                Call<Void> call = api.registration(APIKEY, Utils.user);
-                call.enqueue(new Callback<Void>() {
-                    @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        if (response.isSuccessful()) {
-                            Toast.makeText(SignUpActivity.this, "sign up ok", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(SignUpActivity.this, LogInActivity.class));
-                        } else {
-                            Toast.makeText(SignUpActivity.this, response.code() + "", Toast.LENGTH_SHORT).show();
-                        }
-                    }
+                String e = String.valueOf(email.getEditText().getText());
+                String p1 = String.valueOf(password.getEditText().getText());
+                String p2 = String.valueOf(passwordConfirm.getEditText().getText());
 
-                    @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-                        Toast.makeText(SignUpActivity.this, t.getMessage().toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                if (checkBox.isChecked()
+                        && isEmailValid(e)
+                        && p1.equals(p2)
+                        && e.equals(e.toLowerCase())) {
+
+
+                    User user = new User(e, p1);
+
+                    Call<ResponseUser> call = api.signUpByEmailAndPassword(APIKEY, user);
+                    call.enqueue(new Callback<ResponseUser>() {
+                        @Override
+                        public void onResponse(Call<ResponseUser> call, Response<ResponseUser> response) {
+                            if (response.isSuccessful()) {
+                                Toast.makeText(SignUpActivity.this, "User create", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(SignUpActivity.this, HomeActivity.class));
+                            } else {
+                                Toast.makeText(SignUpActivity.this, response.code() + "", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseUser> call, Throwable t) {
+                            Toast.makeText(SignUpActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         });
+
     }
 
-    public void signin(View view) {
-        startActivity(new Intent(SignUpActivity.this, LogInActivity.class));
+
+
+    boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
+
+
+    public void signin(View view) {
+        startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+    }
+
 }

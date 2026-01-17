@@ -42,7 +42,7 @@ public class OTPVerificationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_otp_verification);
+        setContentView(R.layout.activity_otpverification);
 
         NewPassButton = findViewById(R.id.SetNewPass);
         resendText = findViewById(R.id.resendAfter);

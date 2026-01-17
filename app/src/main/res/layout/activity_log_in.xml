@@ -156,4 +156,13 @@
         android:layout_marginTop="15dp"
         android:src="@drawable/g"/>
 
+    <Button
+        android:id="@+id/button_signin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="30dp"
+        android:text="Sign In"
+        android:textSize="16sp" />
+
 </LinearLayout>

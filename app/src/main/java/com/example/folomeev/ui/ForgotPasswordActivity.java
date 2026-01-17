@@ -81,7 +81,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     }
 
     public void signin2(View view) {
-        startActivity(new Intent(ForgotPasswordActivity.this, LogInActivity.class));
+        startActivity(new Intent(ForgotPasswordActivity.this, LoginActivity.class));
     }
 
     boolean isEmailValid(CharSequence email) {

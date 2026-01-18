@@ -1,12 +1,17 @@
 package com.example.folomeev.data;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ChangePasswordToken {
 
-    String type;
+    @SerializedName("type")
+    public String type;
 
-    String email;
+    @SerializedName("email")
+    public String email;
 
-    String token;
+    @SerializedName("token")
+    public String token;
 
     public ChangePasswordToken(String type, String email, String token) {
         this.type = type;

@@ -124,7 +124,7 @@
             android:layout_height="44dp"
             android:textSize="14sp"
             android:paddingTop="14dp"
-            android:inputType="textPassword"
+            android:inputType="textEmailAddress"
             android:textColor="@color/gray2"
             android:fontFamily="@font/proggy_vector_dotted"
             android:text="hadtrist@mail.ru" />

@@ -9,7 +9,7 @@ public class Utils {
     public static User user = new User("","");
 
 
-    public static final String BASE_URL = "https://msrpkzrstqqmajjzjddd.supabase.co/rest/v1/";
+    public static final String BASE_URL = "https://msrpkzrstqqmajjzjddd.supabase.co/auth/v1/";
 
     public static final String GRANT_TYPE = "password";
 

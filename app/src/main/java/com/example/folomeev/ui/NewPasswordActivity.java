@@ -41,6 +41,9 @@ public class NewPasswordActivity extends AppCompatActivity {
         TextInputEditText newPassConfirm = findViewById(R.id.newPasswordConfirmField);
         TextInputEditText newPassField = findViewById(R.id.newPasswordField);
 
+        String pass1 = newPassConfirm.getText().toString();
+        String pass2 = newPassField.getText().toString();
+
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -52,7 +55,7 @@ public class NewPasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (newPassConfirm.getEditableText().toString() != newPassField.getEditableText().toString()) {
+                if (!pass1.equals(pass2)) {
                     Toast.makeText(NewPasswordActivity.this, "Password's doesn't match", Toast.LENGTH_SHORT).show();
                 } else {
                     User user = new User(EmailForPassChange, newPassConfirm.getEditableText().toString());

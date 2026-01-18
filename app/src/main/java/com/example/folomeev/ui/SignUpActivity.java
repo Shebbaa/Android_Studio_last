@@ -62,8 +62,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                 if (checkBox.isChecked()
                         && isEmailValid(e)
-                        && p1.equals(p2)
-                        && e.equals(e.toLowerCase())) {
+                        && p1.equals(p2)){
 
 
                     User user = new User(e, p1);

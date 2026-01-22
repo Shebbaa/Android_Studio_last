@@ -71,15 +71,14 @@ public class SignUpActivity extends AppCompatActivity {
                     call.enqueue(new Callback<ResponseUser>() {
                         @Override
                         public void onResponse(Call<ResponseUser> call, Response<ResponseUser> response) {
-//                            if (response.isSuccessful()) {
-//                                Intent intent = new Intent(SignUpActivity.this, OTPVerificationActivity.class);
-//                                intent.putExtra("email", e);
-//                                startActivity(intent);
-                                    //  Добавление верификации почты при регистрации. Но к сожалению, из за того что токены не принимаются, ничего не робит :(
-
-
                             if (response.isSuccessful()) {
-                                startActivity(new Intent(SignUpActivity.this, HomeActivity.class));
+                                Intent intent = new Intent(SignUpActivity.this, OTPVerificationActivity.class);
+                                intent.putExtra("email", e);
+                                intent.putExtra("emailRepeat", e);
+                                startActivity(intent);
+
+//                            if (response.isSuccessful()) {
+//                               startActivity(new Intent(SignUpActivity.this, HomeActivity.class));
                             } else {
                                 Toast.makeText(SignUpActivity.this, response.code() + "", Toast.LENGTH_SHORT).show();
                             }

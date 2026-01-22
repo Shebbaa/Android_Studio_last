@@ -4,6 +4,7 @@ import static com.example.folomeev.utils.Utils.APIKEY;
 import static com.example.folomeev.utils.Utils.BASE_URL;
 import static com.example.folomeev.utils.Utils.GRANT_TYPE;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     MaterialButton button;
     Retrofit retrofit;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

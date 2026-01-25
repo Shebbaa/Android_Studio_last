@@ -1,4 +1,4 @@
-package com.example.folomeev.ui;
+package com.example.folomeev.ui.auth;
 
 
 import static com.example.folomeev.utils.Utils.APIKEY;
@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.folomeev.R;
 import com.example.folomeev.controller.API;
 import com.example.folomeev.data.Email;
+import com.example.folomeev.ui.OTPVerificationActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 

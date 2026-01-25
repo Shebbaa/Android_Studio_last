@@ -13,22 +13,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Folomeev">
         <activity
-            android:name=".ui.SignUpActivity"
+            android:name=".ui.auth.SignUpActivity"
             android:exported="false" />
+        <activity android:name=".ui.AddMeetingActivity" />
         <activity
             android:name=".ui.OTPVerificationActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.NewPasswordActivity"
+            android:name=".ui.auth.NewPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".ui.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.ForgotPasswordActivity"
+            android:name=".ui.auth.ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".ui.auth.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

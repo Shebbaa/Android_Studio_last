@@ -21,6 +21,7 @@ import com.example.folomeev.controller.API;
 import com.example.folomeev.data.ChangePasswordToken;
 import com.example.folomeev.data.Email;
 import com.example.folomeev.data.ResponseUser;
+import com.example.folomeev.ui.auth.NewPasswordActivity;
 import com.google.android.material.button.MaterialButton;
 
 import retrofit2.Call;

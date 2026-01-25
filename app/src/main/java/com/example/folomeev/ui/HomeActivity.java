@@ -32,12 +32,27 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        adapter = new MeetingAdapter(dbHelper.getAllMeetings(), (meeting, position) -> {
 
+// Внутри onCreate в HomeActivity.java
 
-            Toast.makeText(HomeActivity.this, "Нажата: " + meeting.getTitle(), Toast.LENGTH_SHORT).show();
-
-
+        adapter = new MeetingAdapter(dbHelper.getAllMeetings(), new MeetingAdapter.OnMeetingClickListener() {
+            @Override
+            public void onMeetingClick(Meeting meeting) {
+                // Убедись, что здесь ТЕПЕРЬ только (Meeting meeting) без int
+                Intent intent = new Intent(HomeActivity.this, TaskListActivity.class);
+                intent.putExtra("meeting_id", meeting.getId());
+                intent.putExtra("meeting_title", meeting.getTitle());
+                startActivity(intent);
+            }
+            @Override
+            public void onMoreClick(Meeting meeting) {
+                Intent intent = new Intent(HomeActivity.this, DetailActivity.class);
+                intent.putExtra("id", meeting.getId());
+                intent.putExtra("title", meeting.getTitle());
+                intent.putExtra("category", meeting.getCategory());
+                intent.putExtra("date", meeting.getDate());
+                startActivity(intent);
+            }
         });
 
         recyclerView.setAdapter(adapter);

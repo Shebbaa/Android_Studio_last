@@ -16,6 +16,8 @@
             android:name=".ui.auth.SignUpActivity"
             android:exported="false" />
         <activity android:name=".ui.AddMeetingActivity" />
+        <activity android:name=".ui.DetailActivity" />
+        <activity android:name=".ui.TaskListActivity" />
         <activity
             android:name=".ui.OTPVerificationActivity"
             android:exported="false" />

@@ -3,6 +3,7 @@ package com.example.folomeev.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,10 +18,9 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingV
 
 
     public interface OnMeetingClickListener {
-        void onMeetingClick(Meeting meeting, int position);
+        void onMoreClick(Meeting meeting);
+        void onMeetingClick(Meeting meeting); // Оставили только один параметр
     }
-
-
     public MeetingAdapter(List<Meeting> meetings, OnMeetingClickListener onClickListener) {
         this.meetings = meetings;
         this.onClickListener = onClickListener;
@@ -34,6 +34,9 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingV
         return new MeetingViewHolder(view);
     }
 
+// Внутри MeetingAdapter.java
+
+    // ... в методе onBindViewHolder ...
     @Override
     public void onBindViewHolder(@NonNull MeetingViewHolder holder, int position) {
         Meeting meeting = meetings.get(position);
@@ -41,12 +44,23 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingV
         holder.tvCategory.setText(meeting.getCategory());
         holder.tvDate.setText(meeting.getDate());
 
+        // Теперь здесь 1 параметр, и в интерфейсе 1. Ошибка исчезнет.
+        holder.itemView.setOnClickListener(v -> onClickListener.onMeetingClick(meeting));
 
-        holder.itemView.setOnClickListener(v -> {
-            if (onClickListener != null) {
-                onClickListener.onMeetingClick(meeting, position);
-            }
-        });
+        holder.btnMore.setOnClickListener(v -> onClickListener.onMoreClick(meeting));
+    }
+    // Не забудь добавить ImageButton в ViewHolder
+    public static class MeetingViewHolder extends RecyclerView.ViewHolder {
+        TextView tvTitle, tvCategory, tvDate;
+        ImageButton btnMore; // <--- добавить
+
+        public MeetingViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tvTitle = itemView.findViewById(R.id.tvTitle);
+            tvCategory = itemView.findViewById(R.id.tvCategory);
+            tvDate = itemView.findViewById(R.id.tvDate);
+            btnMore = itemView.findViewById(R.id.btnMore); // <--- инициализировать
+        }
     }
 
     @Override
@@ -58,16 +72,5 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingV
     public void updateList(List<Meeting> newMeetings) {
         this.meetings = newMeetings;
         notifyDataSetChanged();
-    }
-
-    public static class MeetingViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTitle, tvCategory, tvDate;
-
-        public MeetingViewHolder(@NonNull View itemView) {
-            super(itemView);
-            tvTitle = itemView.findViewById(R.id.tvTitle);
-            tvCategory = itemView.findViewById(R.id.tvCategory);
-            tvDate = itemView.findViewById(R.id.tvDate);
-        }
     }
 }

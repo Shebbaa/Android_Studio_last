@@ -38,4 +38,7 @@ public class AddMeetingActivity extends AppCompatActivity {
             finish(); // Закрываем экран
         });
     }
+
+
+
 }

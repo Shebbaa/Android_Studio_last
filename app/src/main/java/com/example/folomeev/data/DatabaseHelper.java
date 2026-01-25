@@ -77,6 +77,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return meetingList;
     }
+    public void updateMeeting(Meeting meeting) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
 
+        values.put(COLUMN_TITLE, meeting.getTitle());
+        values.put(COLUMN_CATEGORY, meeting.getCategory());
+        values.put(COLUMN_DATE, meeting.getDate());
+
+        db.update(TABLE_MEETINGS, values, COLUMN_ID + " = ?", new String[]{String.valueOf(meeting.getId())});
+        db.close();
+    }
+
+    public void deleteMeeting(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_MEETINGS, COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
+        db.close();
+    }
 
 }

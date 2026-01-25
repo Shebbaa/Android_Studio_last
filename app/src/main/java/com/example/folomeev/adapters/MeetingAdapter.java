@@ -13,14 +13,14 @@ import java.util.List;
 public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingViewHolder> {
 
     private List<Meeting> meetings;
-    private final OnMeetingClickListener onClickListener; // 1. Переменная для клика
+    private final OnMeetingClickListener onClickListener;
 
-    // 2. Интерфейс для кликов
+
     public interface OnMeetingClickListener {
         void onMeetingClick(Meeting meeting, int position);
     }
 
-    // 3. Обновили конструктор: теперь он просит еще и слушатель кликов
+
     public MeetingAdapter(List<Meeting> meetings, OnMeetingClickListener onClickListener) {
         this.meetings = meetings;
         this.onClickListener = onClickListener;
@@ -41,7 +41,7 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingV
         holder.tvCategory.setText(meeting.getCategory());
         holder.tvDate.setText(meeting.getDate());
 
-        // 4. ВЕШАЕМ ОБРАБОТЧИК НАЖАТИЯ на весь элемент списка
+
         holder.itemView.setOnClickListener(v -> {
             if (onClickListener != null) {
                 onClickListener.onMeetingClick(meeting, position);
@@ -54,10 +54,10 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingV
         return meetings.size();
     }
 
-    // 5. Исправили обновление списка
+
     public void updateList(List<Meeting> newMeetings) {
         this.meetings = newMeetings;
-        notifyDataSetChanged(); // <--- ВОТ ЭТОЙ СТРОЧКИ НЕ ХВАТАЛО для обновления!
+        notifyDataSetChanged();
     }
 
     public static class MeetingViewHolder extends RecyclerView.ViewHolder {

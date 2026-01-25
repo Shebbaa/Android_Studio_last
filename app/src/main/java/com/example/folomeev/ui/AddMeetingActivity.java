@@ -17,7 +17,7 @@ public class AddMeetingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_meeting); // Убедись, что xml файл создан!
+        setContentView(R.layout.activity_add_meeting);
 
         etTitle = findViewById(R.id.etTitle);
         etCategory = findViewById(R.id.etCategory);

@@ -58,7 +58,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 User user = new User(String.valueOf(email.getEditText().getText()), String.valueOf(password.getEditText().getText()));
-                //запрос к базе данных на авторизацию пользователя
                 Call<ResponseUser> call = api.login(GRANT_TYPE, APIKEY, user);
                 call.enqueue(new Callback<ResponseUser>() {
                     @Override

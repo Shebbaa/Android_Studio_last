@@ -1,12 +1,12 @@
 package com.example.folomeev.ui;
 
-import android.content.Intent; // БЫЛО КРАСНЫМ: Инструмент для перехода
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager; // БЫЛО КРАСНЫМ: Менеджер списка
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.folomeev.R;
@@ -31,20 +31,13 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewMeetings);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Инициализируем адаптер.
-        // Вторым параметром передаем, что делать при клике
+
         adapter = new MeetingAdapter(dbHelper.getAllMeetings(), (meeting, position) -> {
 
-            // ТУТ КОД, КОТОРЫЙ СРАБОТАЕТ ПРИ НАЖАТИИ
-            // Пока просто выведем название в тост, чтобы проверить
+
             Toast.makeText(HomeActivity.this, "Нажата: " + meeting.getTitle(), Toast.LENGTH_SHORT).show();
 
-            // Если у тебя есть активити для деталей, раскомментируй и используй этот код:
-            /*
-            Intent intent = new Intent(HomeActivity.this, DetailActivity.class);
-            intent.putExtra("meeting_id", meeting.getId()); // Передаем ID
-            startActivity(intent);
-            */
+
         });
 
         recyclerView.setAdapter(adapter);
@@ -58,8 +51,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // Теперь, благодаря notifyDataSetChanged() внутри updateList,
-        // список обновится сам сразу при возвращении на экран
+
         if(adapter != null) {
             adapter.updateList(dbHelper.getAllMeetings());
         }

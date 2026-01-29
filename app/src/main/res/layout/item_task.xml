@@ -2,18 +2,24 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="12dp"
     android:gravity="center_vertical">
 
     <CheckBox
         android:id="@+id/cbDone"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/blue"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
+        android:layout_marginEnd="12dp"/>
 
     <TextView
         android:id="@+id/tvTaskText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="18sp"
+        android:textColor="@color/black"
         android:text="Пример задачи" />
 </LinearLayout>

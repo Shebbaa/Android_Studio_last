@@ -3,47 +3,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:text="Список задач" />
-
-
-    <TextView
-        android:id="@+id/tvTaskListHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp" />
+    android:background="@color/background_page">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="20dp"
+        android:background="@color/white"
+        android:elevation="4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue"
+            android:text="Задачи для встречи" />
+
+        <TextView
+            android:id="@+id/tvTaskListHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:fontFamily="sans-serif-medium"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="4dp"
+            android:text="Название" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTasks"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="12dp"
+        android:clipToPadding="false"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:elevation="16dp">
 
         <EditText
             android:id="@+id/etNewTask"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Что нужно сделать?" />
+            android:background="@null"
+            android:hint="Добавить новую задачу..."
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray2" />
 
         <Button
             android:id="@+id/btnAddTodo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+" />
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:text="+"
+            android:textSize="28sp"
+            android:backgroundTint="@color/blue"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            android:elevation="2dp"/>
     </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvTasks"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="16dp" />
 
 </LinearLayout>

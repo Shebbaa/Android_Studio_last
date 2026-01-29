@@ -1,63 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    android:gravity="center_horizontal">
+    android:background="@color/background_page">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Редактирование"
-        android:textSize="24sp"
+        android:textSize="28sp"
         android:textStyle="bold"
-        android:layout_marginBottom="32dp"/>
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginBottom="24dp"/>
 
-    <EditText
-        android:id="@+id/etTitleDetail"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Название"
-        android:minHeight="48dp"/>
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:padding="24dp"
+        android:elevation="4dp">
 
-    <EditText
-        android:id="@+id/etCategoryDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Категория"
-        android:minHeight="48dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Название события"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:layout_marginBottom="4dp"/>
 
-    <EditText
-        android:id="@+id/etDateDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Дата"
-        android:inputType="date"
-        android:minHeight="48dp"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilTitleDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etTitleDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Категория"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:layout_marginBottom="4dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilCategoryDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCategoryDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Дата"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:layout_marginBottom="4dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDateDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDateDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="32dp"
-        android:gravity="center">
+        android:weightSum="2">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
             android:text="Удалить"
-            android:backgroundTint="#D32F2F"
-            android:layout_marginEnd="16dp"/>
+            android:textStyle="bold"
+            android:layout_marginEnd="12dp"
+            app:cornerRadius="12dp"
+            android:backgroundTint="@color/red" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Сохранить" />
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:text="Сохранить"
+            android:textStyle="bold"
+            android:layout_marginStart="12dp"
+            app:cornerRadius="12dp"
+            android:backgroundTint="@color/blue" />
     </LinearLayout>
-
 </LinearLayout>

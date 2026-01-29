@@ -1,48 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    android:gravity="center_horizontal">
+    android:background="@color/background_page">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Новая встреча"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="32dp"/>
+        android:textSize="26sp"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginBottom="32dp"
+        android:layout_gravity="start"/>
 
-    <EditText
-        android:id="@+id/etTitle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Название (например, Экзамен)"
-        android:minHeight="48dp"/>
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:padding="20dp"
+        android:elevation="2dp">
 
-    <EditText
-        android:id="@+id/etCategory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Категория (Учеба, Работа)"
-        android:minHeight="48dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Название"
+            android:textColor="@color/blue"
+            android:textSize="12sp" />
 
-    <EditText
-        android:id="@+id/etDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Дата (например, 25.01)"
-        android:inputType="date"
-        android:minHeight="48dp"/>
+        <EditText
+            android:id="@+id/etTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Например, Экзамен"
+            android:backgroundTint="@color/blue"
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp"/>
 
-    <Button
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Категория"
+            android:textColor="@color/blue"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/etCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Учеба, Работа"
+            android:backgroundTint="@color/blue"
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Дата"
+            android:textColor="@color/blue"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/etDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ДД.ММ.ГГГГ"
+            android:inputType="date"
+            android:backgroundTint="@color/blue"
+            android:minHeight="48dp"/>
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSave"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_marginTop="32dp"
-        android:text="Сохранить"
-        android:backgroundTint="#006CEC"/>
+        android:text="Создать встречу"
+        android:textStyle="bold"
+        app:cornerRadius="12dp"
+        android:backgroundTint="@color/blue" />
+
 </LinearLayout>

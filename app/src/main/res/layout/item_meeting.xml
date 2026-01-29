@@ -4,60 +4,70 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
-    app:cardCornerRadius="12dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="16dp"
     app:cardElevation="4dp"
-    app:cardBackgroundColor="#FFFFFF">
+    app:cardBackgroundColor="@color/white">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="20dp">
 
         <LinearLayout
             android:id="@+id/containerText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_toStartOf="@+id/btnMore"
-            android:layout_alignParentStart="true">
+            android:layout_marginEnd="8dp">
 
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
+                android:fontFamily="sans-serif-medium"
                 android:textStyle="bold"
-                android:textColor="#212121"
+                android:textColor="@color/black"
                 android:text="Название встречи" />
 
             <TextView
                 android:id="@+id/tvCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="6dp"
                 android:text="Категория"
-                android:textColor="#3F51B5" />
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/blue" />
         </LinearLayout>
 
         <ImageButton
             android:id="@+id/btnMore"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_menu_more" />
+            android:src="@android:drawable/ic_menu_more"
+            app:tint="@color/gray" />
 
         <TextView
             android:id="@+id/tvDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/containerText"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="8dp"
-            android:text="25.01" />
+            android:layout_marginTop="16dp"
+            android:text="25.01"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/gray"
+            android:gravity="center_vertical"
+            android:drawablePadding="8dp"
+            app:drawableStartCompat="@android:drawable/ic_menu_my_calendar"
+            app:drawableTint="@color/gray"/>
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
-

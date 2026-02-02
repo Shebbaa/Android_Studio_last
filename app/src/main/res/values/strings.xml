@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">demoapp</string>
+    <string name="app_name">MeetingFlow</string>
     <string name="test_email">test@mail.ru</string>
     <string name="test_password">123456789</string>
     <string name="test_phone">+7905</string>

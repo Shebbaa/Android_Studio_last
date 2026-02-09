@@ -35,7 +35,7 @@ public class AddMeetingActivity extends AppCompatActivity {
             }
 
             dbHelper.addMeeting(new Meeting(title, category, date));
-            finish(); // Закрываем экран
+            finish();
         });
     }
 

@@ -60,7 +60,6 @@ public class TaskListActivity extends AppCompatActivity {
 
         if (cursor.moveToFirst()) {
             do {
-                // Считываем данные из БД (индексы колонок: 0-id, 1-meeting_id, 2-text, 3-is_done)
                 int id = cursor.getInt(0);
                 String text = cursor.getString(2);
                 int isDoneInt = cursor.getInt(3);
@@ -70,12 +69,10 @@ public class TaskListActivity extends AppCompatActivity {
         }
         cursor.close();
 
-        // Если адаптер еще не создан — создаем, если есть — обновляем
         if (adapter == null) {
             adapter = new TaskAdapter(taskList, new TaskAdapter.OnTaskStatusChangeListener() {
                 @Override
                 public void onTaskStatusChanged(Task task, boolean isDone) {
-                    // Самое важное: сохраняем галочку в базу данных!
                     dbHelper.updateTaskStatus(task.id, isDone);
                 }
             });

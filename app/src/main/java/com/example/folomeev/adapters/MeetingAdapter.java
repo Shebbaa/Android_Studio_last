@@ -19,7 +19,7 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingV
 
     public interface OnMeetingClickListener {
         void onMoreClick(Meeting meeting);
-        void onMeetingClick(Meeting meeting); // Оставили только один параметр
+        void onMeetingClick(Meeting meeting);
     }
     public MeetingAdapter(List<Meeting> meetings, OnMeetingClickListener onClickListener) {
         this.meetings = meetings;
@@ -34,9 +34,7 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingV
         return new MeetingViewHolder(view);
     }
 
-// Внутри MeetingAdapter.java
 
-    // ... в методе onBindViewHolder ...
     @Override
     public void onBindViewHolder(@NonNull MeetingViewHolder holder, int position) {
         Meeting meeting = meetings.get(position);
@@ -44,22 +42,20 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingV
         holder.tvCategory.setText(meeting.getCategory());
         holder.tvDate.setText(meeting.getDate());
 
-        // Теперь здесь 1 параметр, и в интерфейсе 1. Ошибка исчезнет.
         holder.itemView.setOnClickListener(v -> onClickListener.onMeetingClick(meeting));
 
         holder.btnMore.setOnClickListener(v -> onClickListener.onMoreClick(meeting));
     }
-    // Не забудь добавить ImageButton в ViewHolder
     public static class MeetingViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvCategory, tvDate;
-        ImageButton btnMore; // <--- добавить
+        ImageButton btnMore;
 
         public MeetingViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvCategory = itemView.findViewById(R.id.tvCategory);
             tvDate = itemView.findViewById(R.id.tvDate);
-            btnMore = itemView.findViewById(R.id.btnMore); // <--- инициализировать
+            btnMore = itemView.findViewById(R.id.btnMore);
         }
     }
 

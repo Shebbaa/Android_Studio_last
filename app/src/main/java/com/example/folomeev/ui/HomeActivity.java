@@ -33,12 +33,10 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-// Внутри onCreate в HomeActivity.java
 
         adapter = new MeetingAdapter(dbHelper.getAllMeetings(), new MeetingAdapter.OnMeetingClickListener() {
             @Override
             public void onMeetingClick(Meeting meeting) {
-                // Убедись, что здесь ТЕПЕРЬ только (Meeting meeting) без int
                 Intent intent = new Intent(HomeActivity.this, TaskListActivity.class);
                 intent.putExtra("meeting_id", meeting.getId());
                 intent.putExtra("meeting_title", meeting.getTitle());
